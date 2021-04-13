@@ -6,13 +6,13 @@
           <td>Id</td>
           <td>Nome</td>
           <td>Idade</td>
-          <td>cidade</td>
-          <td>estado</td>
+          <td>Cidade</td>
+          <td>Estado</td>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pessoa of pessoas">
-          <td>{{pessoa.id}}</td>
+        <tr *ngFor="let pessoa of pessoas ; let i= index">
+          <td>{{i}}</td>
           <td>{{pessoa.nome}}</td>
           <td [style.color] = "pegarCor(pessoa.idade)">{{pessoa.idade}}</td>
           <td>{{pessoa.cidade}}</td>
@@ -23,14 +23,10 @@
   </div>
   <div class="row">
     <div class="col-md-6 form-group">
-      <label for="idInput">Id</label>
-      <input type="text" class="form-control" id="idInput" #idInput>
-    </div>
-
-    <div class="col-md-6 form-group">
       <label for="nomeInput">Nome</label>
       <input type="text" class="form-control" id="nomeInput" #nomeInput>
     </div>
+
     <div class="col-md-6 form-group mb-2">
       <label for="Idade">Idade</label>
       <input type="text" class="form-control" id="nomeInput" #idadeInput>
@@ -40,6 +36,7 @@
       <label for="Cidade">Cidade</label>
       <input type="text" class="form-control" id="nomeInput" #cidadeInput>
     </div>
+
     <div class="col-md-6 form-group mb-2">
       <label for="Estado">Estado</label>
       <input type="text" class="form-control" id="estadoInput" #estadoInput>
@@ -49,7 +46,7 @@
   <!-- Numero Sequncial -->
   <div class="row">
     <button class="btn btn-primary btn-block" (click)="adicionar(
-    idInput.value+1,
+
     nomeInput.value,
     idadeInput.value,
     cidadeInput.value,
