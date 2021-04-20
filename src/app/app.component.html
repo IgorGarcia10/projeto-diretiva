@@ -1,3 +1,4 @@
+<!-- 
 <div class="container">
   <div class="row">
     <table [hidden]="esconder" class="table table-striped table-hover">
@@ -14,45 +15,61 @@
         <tr *ngFor="let pessoa of pessoas ; let i= index">
           <td>{{i}}</td>
           <td>{{pessoa.nome}}</td>
-          <td [style.color] = "pegarCor(pessoa.idade)">{{pessoa.idade}}</td>
+          <td [style.color]="pegarCor(pessoa.idade)">{{pessoa.idade}}</td>
           <td>{{pessoa.cidade}}</td>
           <td>{{pessoa.estado}}</td>
         </tr>
       </tbody>
+
     </table>
   </div>
-  <div class="row">
-    <div class="col-md-6 form-group">
-      <label for="nomeInput">Nome</label>
-      <input type="text" class="form-control" id="nomeInput" #nomeInput>
-    </div>
-
-    <div class="col-md-6 form-group mb-2">
-      <label for="Idade">Idade</label>
-      <input type="text" class="form-control" id="nomeInput" #idadeInput>
-    </div>
-
-    <div class="col-md-6 form-group mb-2">
-      <label for="Cidade">Cidade</label>
-      <input type="text" class="form-control" id="nomeInput" #cidadeInput>
-    </div>
-
-    <div class="col-md-6 form-group mb-2">
-      <label for="Estado">Estado</label>
-      <input type="text" class="form-control" id="estadoInput" #estadoInput>
-    </div>
+ -->
+<!-- 
+<div class="row">
+  <div class="col-md-6 form-group">
+    <label for="nomeInput">Nome</label>
+    <input type="text" class="form-control" id="nomeInput" #nomeInput>
   </div>
 
-  <!-- Numero Sequncial -->
-  <div class="row">
-    <button class="btn btn-primary btn-block" (click)="adicionar(
+  <div class="col-md-6 form-group mb-2">
+    <label for="Idade">Idade</label>
+    <input type="text" class="form-control" id="nomeInput" #idadeInput>
+  </div>
+
+  <div class="col-md-6 form-group mb-2">
+    <label for="Cidade">Cidade</label>
+    <input type="text" class="form-control" id="nomeInput" #cidadeInput>
+  </div>
+
+  <div class="col-md-6 form-group mb-2">
+    <label for="Estado">Estado</label>
+    <input type="text" class="form-control" id="estadoInput" #estadoInput>
+  </div>
+</div>
+
+
+<div class="row">
+  <button class="btn btn-primary btn-block" (click)="adicionar(
 
     nomeInput.value,
     idadeInput.value,
     cidadeInput.value,
     estadoInput.value)" type="button">Cadastrar</button>
+</div>
+
+
+<div class="row">
+  <button class="btn btn-primary btn-block mt-3" (click)=alterarExibicao()>{{textoBotao}}</button>
+</div>
+ -->
+
+
+<div class="container">
+
+  <app-pessoa-cadastro (pessoaAdicionada)="onAdicionarPessoa($event)"></app-pessoa-cadastro>
+
+  <div class=" col-4" *ngFor="let pessoa of pessoas">
+    <app-pessoa-cartao [pessoa]="pessoa"></app-pessoa-cartao>
   </div>
-  <div class="row">
-    <button class="btn btn-primary btn-block mt-3" (click)=alterarExibicao()>{{textoBotao}}</button>
-  </div>
+
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,34 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Diretiva';
 
+textoBotao = "Esconder";
+esconder = false;
 
-  contador = 0;
-
-  contaId(contador){
-    return contador = contador+1;
-  }
-  
-
-  pessoas = [
-    { nome: "José", idade: 18, cidade: "São Paulo", estado: "São Paulo"},
-    { nome: "Maria", idade: 23, cidade: "Rio Janeiro", estado: "Rio de janeiro" }
+pessoas = [
+  { nome: "José", idade: 18 },
+  { nome: "Maria", idade: 22 }
   ];
 
-  textoBotao = "Esconder";
-  esconder = false;
-  alterarExibicao() {
-    this.textoBotao = this.esconder ? "Esconder" : "Exibir";
-    this.esconder = !this.esconder;
+alterarExibicao() {
+this.textoBotao = this.esconder ? "Esconder" : "Exibir";
+this.esconder = !this.esconder;
+}
+
+onAdicionarPessoa(pessoa) {
+  this.pessoas = [pessoa, ...this.pessoas];
   }
 
-  adicionar(nome, idade, cidade, estado) {
-    this.pessoas = [{nome: nome, idade: idade, cidade: cidade, estado: estado}, ...this.pessoas];
-  }
 
-  pegarCor(idade){
-    return idade >=40 ? "red" : "blue";
-  }
-  
+pegarCor(idade){
+  return idade >= 30 ? "red": "blue";
+}
 }
